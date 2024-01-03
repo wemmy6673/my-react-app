@@ -1,5 +1,5 @@
 import React from 'react';
-import productData from '../data';
+import productData   from '../data';
 import Items from '../Items/Items';
 
 function Related(){

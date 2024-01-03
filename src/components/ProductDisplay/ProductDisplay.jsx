@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsStar } from "react-icons/bs";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf} from "react-icons/bs";
+import { ShopContext } from '../../context/ShopContext';
 
 function ProductDisplay(props){
     const {product} = props;
+    const {addtoCart} = useContext(ShopContext);
     return(
         <>
         <div className='flex flex-col md:flex-row md:space-x-8 justify-start'>
@@ -46,7 +48,7 @@ function ProductDisplay(props){
                 </div>
 
                 <div className=''>
-                    <button className='bg-red-600 text-white p-3'>Add to cart</button>
+                    <button className='bg-red-600 text-white p-3' onClick={()=>{addtoCart(product.id)}}>Add to cart</button>
 
                 </div>
             </div>
