@@ -8,25 +8,31 @@ const ShopContextProvider = (props) =>{
     
     
 
-    const getDefaultCart = () =>{
-        let cart ={};
+    // const getDefaultCart = () =>{
+    //     let cart ={};
 
-        for (let index = 0; index < Category.length+1; index++) {
-            cart[index] = 0;
+    //     for (let index = 0; index < Category.length+1; index++) {
+    //         cart[index] = 0;
             
-        }
-        return cart;
-    }
-    const [cartItems, setCartItems] = useState(getDefaultCart())
+    //     }
+    //     return cart;
+    // }
+
+    // console.log(" category", Category)
+    // const [cartItems, setCartItems] = useState(getDefaultCart())
+    const [cartItems, setCartItems] = useState([])
 
     const addToCart = (itemId) =>{
-        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+        // setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+        const newItem = Category.filter(eachCat => eachCat.id === itemId);
+        const newCart = [...cartItems, ...newItem]
+        setCartItems(newCart)
     }
 
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     }
-
+console.log(cartItems);
     const contextValue = {Category, cartItems, addToCart, removeFromCart};
     return (
         <ShopContext.Provider value={contextValue}>

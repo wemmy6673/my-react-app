@@ -3,10 +3,14 @@ import { BsStar } from "react-icons/bs";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf} from "react-icons/bs";
 import { ShopContext } from '../../context/ShopContext';
+import Category from '../Category'
 
 function ProductDisplay(props){
     const {product} = props;
-    const {addtoCart} = useContext(ShopContext);
+    const contextValue = useContext(ShopContext);
+    const {addToCart} = contextValue;
+    // console.log(contextValue);
+
     return(
         <>
         <div className='flex flex-col md:flex-row md:space-x-8 justify-start'>
@@ -48,7 +52,7 @@ function ProductDisplay(props){
                 </div>
 
                 <div className=''>
-                    <button className='bg-red-600 text-white p-3' onClick={()=>{addtoCart(product.id)}}>Add to cart</button>
+                    <button className='bg-red-600 text-white p-3' onClick={()=>{addToCart(product.id)}}>Add to cart</button>
 
                 </div>
             </div>

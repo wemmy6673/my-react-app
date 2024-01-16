@@ -11,13 +11,14 @@ import Login from './components/Pages/Login';
 import Footer from './components/Footer/Footer';
 import Man from './images/hunter.png';
 import Woman from './images/ianr.png';
+import ShopContextProvider from './context/ShopContext';
 
 
 
 function App(){
 
   return(
-    <div>
+    <ShopContextProvider>
       <BrowserRouter>
       <Navbar/>
       <Routes>
@@ -34,7 +35,7 @@ function App(){
       <Footer/>
       </BrowserRouter>
       
-    </div>
+    </ShopContextProvider>
   )
 
   
