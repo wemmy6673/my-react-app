@@ -20,19 +20,24 @@ const ShopContextProvider = (props) =>{
 
     // console.log(" category", Category)
     // const [cartItems, setCartItems] = useState(getDefaultCart())
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (itemId) =>{
-        // setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+
         const newItem = Category.filter(eachCat => eachCat.id === itemId);
         const newCart = [...cartItems, ...newItem]
         setCartItems(newCart)
     }
-
+    
     const removeFromCart = (itemId) =>{
-        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
+
+        
+        const filteredCart = cartItems.filter(item => item.id !== itemId);
+
+        setCartItems(filteredCart);
+    
     }
-console.log(cartItems);
+    
     const contextValue = {Category, cartItems, addToCart, removeFromCart};
     return (
         <ShopContext.Provider value={contextValue}>
