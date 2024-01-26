@@ -25,8 +25,19 @@ const ShopContextProvider = (props) =>{
     const addToCart = (itemId) =>{
 
         const newItem = Category.filter(eachCat => eachCat.id === itemId);
+        
         const newCart = [...cartItems, ...newItem]
+        
         setCartItems(newCart)
+
+        if(itemId < 2){
+
+            
+            console.log(newCart);
+            
+        }
+        
+        
     }
     
     const removeFromCart = (itemId) =>{
