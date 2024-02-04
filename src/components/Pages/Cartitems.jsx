@@ -33,7 +33,7 @@ function CartItems(){
                 <img src={e.image} alt="" height={100} width={100} className=''/>
                 <p>{e.name}</p>
                 <p>${e.new_price}</p>
-                <button className='border border-gray-300 rounded-md '>
+                <button className='border border-gray-300 rounded-md w-6 h-6 '>
                      {cartItems[e.id]}
                 </button>
                  <p>{e.new_price*cartItems[e.id]}</p>

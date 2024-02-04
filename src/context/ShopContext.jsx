@@ -28,14 +28,23 @@ const ShopContextProvider = (props) =>{
         
         const newCart = [...cartItems, ...newItem]
         
-        setCartItems(newCart)
+        
 
-        if(itemId < 2){
+        if(newItem >= 1){
+
+            console.log("Item already selected")
 
             
-            console.log(newCart);
+         
             
         }
+
+        else{
+        
+        }
+
+        setCartItems(newCart)
+
         
         
     }
