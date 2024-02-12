@@ -25,26 +25,31 @@ const ShopContextProvider = (props) =>{
     const addToCart = (itemId) =>{
 
         const newItem = Category.filter(eachCat => eachCat.id === itemId);
-        
-        const newCart = [...cartItems, ...newItem]
-        
-        
+       
+        if( cartItems.find((v)=> v.id === itemId) ){
 
-        if(newItem >= 1){
 
-            console.log("Item already selected")
-
-            
-         
-            
+            return
         }
 
         else{
-        
+
+
+            
+            const newCart = [...cartItems, ...newItem]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            setCartItems(newCart)
+            
         }
-
-        setCartItems(newCart)
-
         
         
     }
