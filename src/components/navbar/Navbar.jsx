@@ -3,11 +3,17 @@ import sliklogo from '../../images/sliklogo.png';
 import { BsCart } from "react-icons/bs";
 import { BsList } from "react-icons/bs";
 import {useState} from 'react';
+import {useContext} from 'react';
 import {Link} from 'react-router-dom';
+import {ShopContext} from '../../context/ShopContext';
+import CartItems from '../Pages/CartItems';
 
 
 function Navbar(){
     const [menu, setMenu] = useState("shop");
+    const {getTotalCartItems} = useContext(ShopContext);
+    
+
     return(
         <>
         <div className="flex flex-row justify-between py-5 px-10">
@@ -25,7 +31,7 @@ function Navbar(){
 
                 <Link to='/cart'><div className="text-2xl relative hidden md:flex md:self-center">
                     <BsCart/>
-                <div className="bg-red-600 text-white absolute left-4 bottom-2 text-xs rounded-full px-[6px] self-center py-[2px]">0</div>
+                <div className="bg-red-600 text-white absolute left-4 bottom-2 text-xs rounded-full px-[6px] self-center py-[2px]">{getTotalCartItems()}</div>
                 </div>
                 </Link>
                 <div className="text-red-600 text-3xl flex md:hidden self-center"><BsList/></div>

@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 function CartItems(){
 
-    const {category, cartItems, removeFromCart} = useContext(ShopContext)
+    const {category, getTotalCartAmount, cartItems, removeFromCart} = useContext(ShopContext)
     
     return(
         <>
@@ -34,7 +34,7 @@ function CartItems(){
                 <p>{e.name}</p>
                 <p>${e.new_price}</p>
                 <button className='border border-gray-300 rounded-md w-6 h-6 '>
-                     {cartItems[e.id]}
+                     {/* {cartItems[e.id]} */} {getTotalCartAmount}
                 </button>
                  <p>{e.new_price*cartItems[e.id]}</p>
                 <BsX onClick={()=>{removeFromCart(e.id)}}/>
@@ -47,6 +47,34 @@ function CartItems(){
                 )
             }
             
+
+        </div>
+
+
+        <div className='flex flex-col px-10 md:flex-row'>
+            <div className='flex flex-col space-y-5'>
+                <div className='flex flex-row space-x-60'>
+                    <p>Subtotal</p>
+                    <p>$0</p>
+
+
+                </div>
+                <hr />
+
+                <div className='flex flex-row space-x-60'>
+                    <p>Shipping fee</p>
+                    <p>Free</p>
+
+
+                </div>
+
+                <hr />
+                
+            </div>
+
+            <div>
+
+            </div>
 
         </div>
         </>

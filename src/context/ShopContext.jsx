@@ -5,21 +5,7 @@ export const ShopContext = createContext(null);
 
 const ShopContextProvider = (props) =>{
 
-    
-    
-
-    // const getDefaultCart = () =>{
-    //     let cart ={};
-
-    //     for (let index = 0; index < Category.length+1; index++) {
-    //         cart[index] = 0;
-            
-    //     }
-    //     return cart;
-    // }
-
-    // console.log(" category", Category)
-    // const [cartItems, setCartItems] = useState(getDefaultCart())
+        
     const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (itemId) =>{
@@ -33,21 +19,10 @@ const ShopContextProvider = (props) =>{
         }
 
         else{
-
-
             
             const newCart = [...cartItems, ...newItem]
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            setCartItems(newCart)
+             setCartItems(newCart);
             
         }
         
@@ -62,8 +37,40 @@ const ShopContextProvider = (props) =>{
         setCartItems(filteredCart);
     
     }
+
+    const getTotalCartAmount = () => {
+        let totalAmount = 0;
+
+        for (const item in cartItems){
+
+            if(cartItems[item] > 0){
+                let itemInfo = Category.find((product)=>product.id===Number(item))
+                totalAmount += itemInfo.new_price * cartItems[item];
+
+            }
+            
+        }
+
+        return totalAmount;
+
+    }
+
+    const getTotalCartItems = () => {
+        // let totalItem = 0;
+        // for(const item in cartItems)
+        // {
+        //     if(cartItems[item] > 0){
+        //         totalItem += cartItems[item];
+
+        //     }
+        // }
+        // return totalItem;
+
+        return cartItems.length;
+
+    }
     
-    const contextValue = {Category, cartItems, addToCart, removeFromCart};
+    const contextValue = {getTotalCartItems, getTotalCartAmount, Category, cartItems, addToCart, removeFromCart};
     return (
         <ShopContext.Provider value={contextValue}>
             {props.children}
