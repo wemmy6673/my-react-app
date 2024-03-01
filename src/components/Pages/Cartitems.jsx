@@ -34,7 +34,7 @@ function CartItems(){
                 <p>{e.name}</p>
                 <p>${e.new_price}</p>
                 <button className='border border-gray-300 rounded-md w-6 h-6 '>
-                     {/* {cartItems[e.id]} */} {getTotalCartAmount}
+                     {cartItems[e.id]}
                 </button>
                  <p>{e.new_price*cartItems[e.id]}</p>
                 <BsX onClick={()=>{removeFromCart(e.id)}}/>
@@ -55,7 +55,7 @@ function CartItems(){
             <div className='flex flex-col space-y-5'>
                 <div className='flex flex-row space-x-60'>
                     <p>Subtotal</p>
-                    <p>$0</p>
+                    <p>${getTotalCartAmount()}</p>
 
 
                 </div>
@@ -69,6 +69,8 @@ function CartItems(){
                 </div>
 
                 <hr />
+
+                <button className='bg-red-600 text-white py-4'>Proceed To Checkout</button>
                 
             </div>
 
