@@ -12,21 +12,33 @@ const ShopContextProvider = (props) =>{
 
         const newItem = Category.filter(eachCat => eachCat.id === itemId);
        
-        if( cartItems.find((v)=> v.id === itemId) ){
+       
+        // if( cartItems.find((v)=> v.id === itemId) ){
 
 
-            return
+            
+        // }
+
+        // else{
+            
+        //     const newCart = [...cartItems, ...newItem]
+            
+        //      setCartItems(newCart);
+            
+        // }
+
+        if(cartItems.find((v)=> v.id === itemId)){
+
+            return; 
+
+            
         }
 
-        else{
-            
-            const newCart = [...cartItems, ...newItem]
-            
-             setCartItems(newCart);
-            
-        }
         
         
+        const newCart = [...cartItems, ...newItem]
+        
+        setCartItems(newCart);
     }
     
     const removeFromCart = (itemId) =>{
@@ -38,17 +50,9 @@ const ShopContextProvider = (props) =>{
     
     }
 
-    const getTotalCartAmount = (itemPrice) => {
+    const getTotalCartAmount = () => {
 
-        // for (const item in cartItems){
-
-        //     if(cartItems[item] > 0){
-        //         let itemInfo = Category.find((product)=>product.id===Number(item))
-        //         totalAmount += itemInfo.new_price * cartItems[item];
-
-        //     }
-            
-        // }
+        
         let cost = 0;
 
         cartItems.forEach(item=> cost += item.new_price)
